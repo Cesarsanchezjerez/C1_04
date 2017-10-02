@@ -21,14 +21,6 @@ public class Terreno {
 		C=NC;
 		F=NF;
 	}
-	//metodos leer guardar fichero dentro¿?¿?¿?¿? 
-	//cada fichero sera el terreno en una etapa ¿?¿?
-	//estructura x,y,k,max,c,f
-	public void LeerFichero(){
-		
-	}
-	public void GuardarFichero() {
-		
-	}
+	
 	//metodos para consultar/actualizar variables.
 }
