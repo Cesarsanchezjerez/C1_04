@@ -1,0 +1,36 @@
+# C1_04
+Sistemas Inteligentes LAb
+package hito1;
+
+public class Terreno {
+
+	private int Terreno [][]; 
+	private int X;//posicion del tractor
+	private int Y;//posicion del tractor
+	private int K;//cantidad de arrena deseada por casilla
+	private int Max;//maxima arena en una casilla
+	private int C;//cordenada del terreno
+	private int F;//2cordenada del terreno
+	//private
+	
+	//constructor
+	public Terreno(int [][] Nterreno,int NX,int NY,int NK,int NMax,int NC,int NF) {
+		Terreno=Nterreno;
+		X=NX;
+		Y=NY;
+		K=NK;
+		Max=NMax;
+		C=NC;
+		F=NF;
+	}
+	//metodos leer guardar fichero dentroÂ¿?Â¿?Â¿?Â¿? 
+	//cada fichero sera el terreno en una etapa Â¿?Â¿?
+	//estructura x,y,k,max,c,f
+	public void LeerFichero(){
+		
+	}
+	public void GuardarFichero() {
+		
+	}
+	//metodos para consultar/actualizar variables.
+}
