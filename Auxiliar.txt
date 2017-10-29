@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Auxiliar {
 	
-	public int [] leerCabecera(String nombre) throws FileNotFoundException {// necesario¿?¿?¿? creo k innecesario
+	public int [] leerCabecera(String nombre) throws FileNotFoundException {// necesarioÂ¿?Â¿?Â¿? creo k innecesario
 		File fichero = new File(nombre);
 		Scanner sc = new Scanner(fichero);
 		String str = sc.nextLine();
@@ -55,7 +55,7 @@ public class Auxiliar {
 		
 		
 	}
-	public void GuardarTerreno(Terreno terreno) { // añadir opcione de nombrar terreno para guardarlos.
+	public void GuardarTerreno(Terreno terreno) { // aÃ±adir opcione de nombrar terreno para guardarlos.
 		
 		FileWriter fichero=null;
 		int [][] t =terreno.getTerreno();
@@ -76,44 +76,7 @@ public class Auxiliar {
 			
 		}
 		
-	}/*
-	public ArrayList<Movimiento> todas() throws FileNotFoundException{
-		
-		ArrayList<Movimiento>sol=new ArrayList<Movimiento>();
-		
-		Terreno terreno=leerTerreno("Terreno.txt");
-		int [] tractor= {terreno.getx(), terreno.gety()};
-		Movimiento actual=new Movimiento(tractor,new ArrayList<Arena>());
-		
-		movimientosRecur(terreno.getx(), terreno.gety(), 3, 0, actual , sol);
-		
-		return sol;
 	}
-
-	
-	public void movimientosRecur (int x, int y, int arena, int etapa, Movimiento actual, ArrayList<Movimiento> soluciones) {
-		int [] nCoordenadas= new int[2];
-		
-		if (arena==0 || etapa ==4) {
-			if (arena==0){
-				for (int i = 0; i < 3; i++) {
-					actual.setPosicion(nuevaCoordenada(x, y, i));
-					soluciones.add(actual);
-				}
-			}
-		}else {
-			for (int a = 0; a <= arena ; a++) {
-				nCoordenadas=nuevaCoordenada(x, y, etapa);
-				Arena despArena = new Arena(a,nCoordenadas);
-				System.out.println(etapa);
-				
-				actual.getDesplazamientos().add(despArena);	
-				
-				movimientosRecur(x, y, arena-a, etapa+1, actual, soluciones);
-			}		
-		}
-			
-	}*/
 	public ArrayList<int[]> todasV(int repartir){
 		
 		ArrayList<int[]>sol=new ArrayList<int[]>();
@@ -169,6 +132,20 @@ public class Auxiliar {
 		c[0]=x;
 		c[1]=y;
 		return c;
+	}
+	
+	
+	public void aplicarMovimiento(Terreno terreno, Movimiento m) {
+		int [] coordenadas= m.getPosicion();
+		int[][] matriz=terreno.getTerreno();
+		terreno.setX(coordenadas[0]);
+		terreno.setY(coordenadas[1]);
+		for (int i = 0; i < 4; i++) {
+			coordenadas=m.getDesde();
+			coordenadas=nuevaCoordenada(coordenadas[0], coordenadas[1], i);
+			matriz[coordenadas[0]][coordenadas[1]]=m.getArena()[i];
+		}
+		terreno.setTerreno(matriz);
 	}
 }
 
