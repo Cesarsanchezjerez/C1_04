@@ -2,7 +2,7 @@ package hito1;
 
 import java.util.*;
 
-public class Terreno {
+public class Estado {
 
 	private int Terreno[][];
 	private int x;// posicion del tractor
