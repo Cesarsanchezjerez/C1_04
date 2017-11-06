@@ -1,33 +1,32 @@
 package hito1;
-////lelele
+
+import java.util.ArrayList;
+
 public class Frontera {
-	private Nodo[] frontera;
+	private ArrayList<Nodo> frontera;
 	
-	public void añadirNodo(Nodo nodo, int posicion){
-	    Nodo[] fron=frontera; //lista para guardar los valores y no quemar 
-		fron[posicion]=nodo;
-		for (int i=posicion;i<frontera.length;i++){
-			fron[i+1]=frontera[i];
-		}
-		frontera=fron;
+	public void añadirNodo(Nodo nodo){
+	    frontera.add(posicion(frontera, nodo.getValor()), nodo);
 	}
-	public Nodo[] getfrontera(){
+	public ArrayList<Nodo> getfrontera(){
 		return frontera;
 	}
-	public Nodo elimina(){
-		Nodo eliminado=frontera[0];
-		for(int i=0;i<frontera.length-1;i++){
-			frontera[i]=frontera[i+1];
-		}
-		return eliminado;
+	public void elimina(Nodo nodo){
+		frontera.remove(nodo);
 	}
 	public boolean EsVacia(){
-		boolean vacia=false;
-		if(frontera.length==0){
-			vacia=true;
-		}
+		boolean vacia= frontera.isEmpty();
 		return vacia;
 	}
-	
+	public int posicion(ArrayList<Nodo> fron, int valor){
+		int posicion=fron.size();
+		for (int i = 0; i < fron.size(); i++) {
+			if(fron.get(i).getValor()<valor){
+				posicion=i;
+			}
+		}
+		
+		return posicion;
+	}
 
 }
