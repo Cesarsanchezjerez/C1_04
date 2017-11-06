@@ -1,18 +1,20 @@
 package hito1;
 
+import java.util.ArrayList;
+
 public class Nodo {
 	
 	private Nodo padre;
-	private Estado terreno;
+	private Estado estado;
 	private int costo;
-	private Accion movimiento;
+	private Accion accion;
 	private int valor;
-	public Nodo(Nodo padre, Estado terreno, int costo, Accion movimiento, int valor) {
+	public Nodo(Nodo padre, Estado estado, int costo, Accion accion, int valor) {
 		super();
 		this.padre = padre;
-		this.terreno = terreno;
+		this.estado = estado;
 		this.costo = costo;
-		this.movimiento = movimiento;
+		this.accion = accion;
 		this.valor = valor;
 	}
 	public Nodo getPadre() {
@@ -21,29 +23,32 @@ public class Nodo {
 	public void setPadre(Nodo padre) {
 		this.padre = padre;
 	}
-	public Estado getTerreno() {
-		return terreno;
+	public Accion getAccion() {
+		return accion;
 	}
-	public void setTerreno(Estado terreno) {
-		this.terreno = terreno;
+	public void setAccion(Accion accion) {
+		this.accion = accion;
 	}
 	public int getCosto() {
 		return costo;
 	}
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 	public void setCosto(int costo) {
 		this.costo = costo;
-	}
-	public Accion getMovimiento() {
-		return movimiento;
-	}
-	public void setMovimiento(Accion movimiento) {
-		this.movimiento = movimiento;
 	}
 	public int getValor() {
 		return valor;
 	}
 	public void setValor(int valor) {
 		this.valor = valor;
+	}
+	public ArrayList<Nodo> sucesores(){
+		ArrayList<Accion> todas=accion.todasV(estado.getRepartir());
 	}
 	
 }
