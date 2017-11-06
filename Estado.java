@@ -1,27 +1,30 @@
 package hito1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.*;
 
 public class Estado {
 
-	private int Terreno[][];
+	private int terreno[][];
 	private int x;// posicion del tractor
 	private int y;// posicion del tractor
-	private int k;// cantidad de arrena deseada por casilla
+	private int k;// cantidad de arena deseada por casilla
 	private int max;// maxima arena en una casilla
 	private int c;// cordenada del terreno
 	private int f;// 2cordenada del terreno
 	// private
 
 	// constructor
-	public Terreno(int NX, int NY, int NK, int NMax, int NC, int NF) {
+	public Estado(int NX, int NY, int NK, int NMax, int NC, int NF) {
 		x = NX;
 		y = NY;
 		k = NK;
 		max = NMax;
 		c = NC;
 		f = NF;
-		Terreno = new int[c][f];
+		terreno = new int[c][f];
 	}
 
 	// metodos para consultar/actualizar variables.
@@ -33,25 +36,39 @@ public class Estado {
 			for (int i = 0; i < c; i++) {
 				for (int j = 0; j < f; j++) {
 					r = (int) (Math.random() * max);
-					if ((Terreno[i][j] + r) <= max && (v - r) >= 0) {
-						Terreno[i][j] += r;
+					if ((terreno[i][j] + r) <= max && (v - r) >= 0) {
+						terreno[i][j] += r;
 						v -= r;
 					}
 				}
 			}
 		}
 	}
+	public int getRepartir(){
+		int arena = getArena();
+		if(arena<=k){
+			arena=0;
+		}
+		return arena;
+	}
+	public int getArena(){
+		return terreno[x][y];
+	}
 
 	public int[][] getTerreno() {
-		return Terreno;
+		return terreno;
 	}
 
 	public void setTerreno(int[][] Nterreno) {
-		Terreno = Nterreno;
+		terreno = Nterreno;
 	}
 
 	public void setX(int x) {
 		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public int getx() {
@@ -78,8 +95,6 @@ public class Estado {
 		return f;
 	}
 
-	}
-
 	public int[] leerCabecera(String nombre) throws FileNotFoundException {// necesario¿?¿?¿?
 																			// creo
 																			// k
@@ -97,7 +112,7 @@ public class Estado {
 
 	}
 
-	public Terreno leerTerreno(String nombre) throws FileNotFoundException {
+	public Estado leerTerreno(String nombre) throws FileNotFoundException {
 		File fichero = new File(nombre);
 		Scanner sc = new Scanner(fichero);
 		int[] cabecera = leerCabecera(nombre);
@@ -111,7 +126,7 @@ public class Estado {
 		String str = sc.nextLine();
 
 		int fila = 0;
-		Terreno terreno = new Terreno(x, y, k, max, c, f);
+		Estado terreno = new Estado(x, y, k, max, c, f);
 		// System.out.println(terreno.getx()+" "+terreno.gety()+"
 		// "+terreno.getk()+" "+terreno.getmax()+" "+terreno.getc()+"
 		// "+terreno.getf());
@@ -131,7 +146,7 @@ public class Estado {
 
 	}
 
-public void GuardarTerreno(Terreno terreno) { // añadir opcione de nombrar terreno para guardarlos.
+public void GuardarTerreno(Estado terreno) { // añadir opcione de nombrar terreno para guardarlos.
 	
 	FileWriter fichero=null;
 	int [][] t =terreno.getTerreno();
@@ -145,11 +160,9 @@ public void GuardarTerreno(Terreno terreno) { // añadir opcione de nombrar terr
 			for (int j = 0; j < t[i].length; j++) {
 				fichero.write(t[i][j]+" ");
 			}
-			
 		}
 		fichero.close();
-	}catch(Exception ex) {
-		
 	}
-	
-}
+		catch(Exception ex) {
+		
+		}}}
