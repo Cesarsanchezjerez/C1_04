@@ -1,5 +1,5 @@
 package hito1;
-
+////lalalalala
 public class Frontera {
 	private Nodo[] frontera;
 	
