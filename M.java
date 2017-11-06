@@ -77,13 +77,10 @@ public ArrayList<int[]> todasV(int repartir){
 	public void movimientosRecurV ( int arenaQueda, int etapa, int [] actual, ArrayList<int[]> soluciones, int repartir) {
 		
 		if (arenaQueda==0 || etapa >=4) {
-			if (arenaQueda==0){
-				int[] aux=new int[4];
-				if (contarArena(actual)==repartir) {
-					System.arraycopy( actual, 0, aux, 0, actual.length);
-					soluciones.add(aux);
-				}
-				
+			int[] aux=new int[4];
+			if (contarArena(actual)==repartir) {
+				System.arraycopy( actual, 0, aux, 0, actual.length);
+				soluciones.add(aux);	
 			}
 		}else {
 			for (int a = arenaQueda; a >= 0 ; a--) {
