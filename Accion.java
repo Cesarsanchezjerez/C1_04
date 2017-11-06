@@ -1,6 +1,6 @@
 package hito1;
 import java.util.ArrayList;
-public class Movimiento {
+public class Accion {
 	private int[] posicion=new int[2];
 	private int[] desde=new int[2];
 	private int [] arena=new int [4];
