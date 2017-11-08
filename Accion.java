@@ -1,5 +1,7 @@
 package hito1;
 
+package hito;
+
 import java.util.ArrayList;
 
 public class Accion {
@@ -36,7 +38,13 @@ public class Accion {
 	public void setDesde(int[] desde) {
 		this.desde = desde;
 	}
-
+	public int cantidadArena(int[] arena) {
+		int suma=0;
+		for (int i = 0; i < arena.length; i++) {
+			suma+=arena[i];
+		}
+		return suma;
+	}
 	@Override
 	public String toString() {
 		String cadena = "(" + posicion[0] + ", " + posicion[1] + "), [";
@@ -77,11 +85,17 @@ public class Accion {
 		return cadena;
 	}
 
-	public ArrayList<int[]> todasV(int repartir) {
-		
+	public ArrayList<Accion> todasV(int repartir) {
+		ArrayList<Accion> acciones = new ArrayList<Accion>();
 		ArrayList<int[]> sol = new ArrayList<int[]>();
 		movimientosRecurV(repartir, 0, new int[4], sol, repartir);
-		return sol;
+		for (int i = 0; i < 3; i++) {
+			for (int[] is : sol) {
+				Accion a= new Accion(nuevaCoordenada(desde[0], desde[1], i), getDesde(), is );
+				acciones.add(a);
+			}
+		}
+		return acciones;
 	}
 
 	public void movimientosRecurV(int arenaQueda, int etapa, int[] actual, ArrayList<int[]> soluciones, int repartir) {
