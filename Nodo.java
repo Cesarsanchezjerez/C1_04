@@ -47,8 +47,9 @@ public class Nodo {
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
-	public ArrayList<Nodo> sucesores(){
+	/*public ArrayList<Nodo> sucesores(){
 		ArrayList<Accion> todas=accion.todasV(estado.getRepartir());
 	}
+	*/
 	
 }
