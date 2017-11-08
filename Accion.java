@@ -1,7 +1,5 @@
 package hito1;
 
-package hito;
-
 import java.util.ArrayList;
 
 public class Accion {
